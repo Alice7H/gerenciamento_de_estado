@@ -1,6 +1,6 @@
 # Redux
 
-Redux é uma biblioteca para armazenamento de estados, criado por Dan Abramov.
+Redux é uma biblioteca para armazenamento de estado, criado por Dan Abramov.
 
 Ele veio para simplificar o controle dos estados de uma aplicação.
 
