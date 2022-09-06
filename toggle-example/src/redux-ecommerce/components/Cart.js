@@ -1,7 +1,13 @@
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { checkout } from '../Actions';
 
-function Cart({ cartList, handleCheckout }) {
+function Cart() {
+  const dispatch = useDispatch();
+  const cartList = useSelector(({ cart }) => cart);
+  const handleCheckout = () => dispatch(checkout());
   const sumTotal = cartList.reduce((sum, { value }) => (sum += value), 0);
+
   return (
     <div>
       <h3>Cart</h3>
@@ -10,7 +16,7 @@ function Cart({ cartList, handleCheckout }) {
         flexDirection: 'column',
         marginBottom: "10px"
       }}>
-        {cartList && cartList.map(product => <span>{product.name}</span>)}
+        {cartList && cartList.map((product) => <span>{product.name}</span>)}
       </div>
       <span>Total: {sumTotal} </span>
       <button onClick={handleCheckout}>Checkout</button>

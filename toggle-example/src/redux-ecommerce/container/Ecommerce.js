@@ -1,11 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 import ProductList from '../components/ProductList';
 import Cart from '../components/Cart';
+import { useDispatch } from 'react-redux';
+import { requestProducts } from '../Actions';
 
 const Ecommerce = () => {
-  const [products, setProducts] = useState([]);
-  const [cartList, setCartList] = useState([]);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     getProducts();
@@ -15,29 +16,21 @@ const Ecommerce = () => {
         const response = await fetch("http://my-json-server.typicode.com/ScottiBR/react-state-management/productList");
         const products = await response.json();
 
-        if (products) setProducts(products);
+        if (products) dispatch(requestProducts(products));
 
       } catch (error) {
         console.log(error);
       }
     }
-  }, []);
+  }, [dispatch]);
 
-  const addToCart = id => {
-    const product = products.find(product => product.id === id);
-    setCartList(prevState => [...prevState, product]);
-  }
-
-  const handleCheckout = () => {
-    setCartList([]);
-  }
   return (
     <div>
       <h2>Shopping</h2>
       <hr />
-      <ProductList products={products} addToCart={addToCart} />
+      <ProductList />
       <hr />
-      <Cart cartList={cartList} handleCheckout={handleCheckout} />
+      <Cart />
     </div>
   );
 }
