@@ -1,5 +1,5 @@
 import Toggle from './components/Toggle';
-import { ToggleProvider } from './contextAPI/ContextProvider';
+import { ToggleProvider } from './ContextProvider';
 
 const App = () => {
 
