@@ -37,7 +37,7 @@ Essa arquitetura, indica como devemos estruturar nossa aplicação de modo que o
 Ela foi criada como uma solução para o problema de gerenciar estado que deve ser compartilhado entre diferentes componentes.
 
 ```mermaid
-graph TD;
+graph LR;
     Views-->Actions;
     Actions-->Dispatcher;
     Dispatcher-->Store;
@@ -71,7 +71,7 @@ Os Reducers recebem Actions emitidas e aplicam-nas ao estado, retornando um novo
 ## Arquitetura Redux
 
 ```mermaid
-graph TD;
+graph LR;
    Actions-->Reducer;
    Reducer-->Store;
    Store-->Views;
@@ -137,7 +137,9 @@ Esse conjunto de ferramentas possui uma abstração da função createStore do R
 
   Se não for fornecido, configureStore chamará getDefaultMiddleware que contém o Redux Thunk.
 
-        - Redux Thunk é um middleware que permite retornar funções, em vez de apenas ações, dentro do Redux, permitindo também trabalhar com ações de forma assíncrona.
+  - Redux Thunk: 
+    
+    É um middleware que permite retornar funções, em vez de apenas ações, dentro do Redux, permitindo também trabalhar com ações de forma assíncrona.
 
   Para saber mais sobre o [getDefaultMiddleware](https://redux-toolkit.js.org/api/getDefaultMiddleware).
 
